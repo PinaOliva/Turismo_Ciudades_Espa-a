@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de viaje — Córdoba, Granada, Sevilla y Madrid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:        #F5EAD6;
+    --sand-deep:   #ECDBB9;
+    --paper:       #FBF4E7;
+    --ink:         #2B2018;
+    --ink-soft:    #5B4A3B;
+    --clay:        #BD5A2E;
+    --clay-deep:   #9C4520;
+    --olive:       #6C7A3E;
+    --indigo:      #2F4A5C;
+    --wine:        #7C3140;
+    --gold:        #C4901F;
+    --rule:        rgba(43,32,24,0.14);
+    --radius:      2px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:var(--clay-deep); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a:hover{ color:var(--wine); }
+
+  .display{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+  }
+
+  /* ---------- background tile texture ---------- */
+  .tile-rule{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:0 auto;
+    width:100%;
+    max-width:640px;
+    padding:2.5rem 0;
+  }
+  .tile-rule svg{ flex:0 0 auto; }
+  .tile-rule .line{
+    flex:1 1 auto;
+    height:1px;
+    background:var(--rule);
+  }
+
+  /* ---------- header ---------- */
+  header.hero{
+    position:relative;
+    padding:4.5rem 1.5rem 3.5rem;
+    text-align:center;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at top, rgba(196,144,31,0.14), transparent 60%),
+      var(--sand);
+  }
+  .eyebrow{
+    font-family:'Karla', sans-serif;
+    font-weight:700;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-size:0.72rem;
+    color:var(--clay-deep);
+    margin-bottom:1.1rem;
+  }
+  header.hero h1{
+    font-size:clamp(2.3rem, 5.5vw, 3.6rem);
+    font-weight:500;
+    font-style:italic;
+    margin:0 0 0.9rem;
+    line-height:1.08;
+    color:var(--ink);
+  }
+  header.hero h1 span{ color:var(--clay-deep); font-style:normal; }
+  header.hero p.lede{
+    max-width:520px;
+    margin:0 auto;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+  }
+  .back-link{
+    display:inline-block;
+    margin-top:1.8rem;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:2px;
+  }
+
+  /* arch illustration row */
+  .arches{
+    display:flex;
+    justify-content:center;
+    gap:0;
+    margin-top:2.6rem;
+  }
+
+  /* ---------- intro note ---------- */
+  .intro-note{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+  .intro-note .card{
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    padding:1.8rem 2rem;
+    position:relative;
+  }
+  .intro-note .card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:4px;
+    background:repeating-linear-gradient(90deg, var(--clay) 0 10px, var(--gold) 10px 20px, var(--olive) 20px 30px);
+    opacity:0.55;
+  }
+  .intro-note h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.2rem;
+    margin:0.3rem 0 0.6rem;
+  }
+  .intro-note p{ margin:0; color:var(--ink-soft); font-size:0.98rem; }
+
+  /* ---------- city nav ---------- */
+  nav.city-jump{
+    max-width:640px;
+    margin:2.6rem auto 0;
+    padding:0 1.5rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.6rem;
+    justify-content:center;
+  }
+  nav.city-jump a{
+    font-family:'Karla', sans-serif;
+    font-weight:600;
+    font-size:0.85rem;
+    color:var(--ink);
+    background:var(--sand-deep);
+    border:1px solid var(--rule);
+    padding:0.5rem 1.1rem;
+    border-radius:30px;
+    text-decoration:none;
+  }
+  nav.city-jump a:hover{ background:var(--clay); color:var(--paper); border-color:var(--clay); }
+
+  /* ---------- main ---------- */
+  main{ max-width:680px; margin:0 auto; padding:0 1.5rem 2rem; }
+
+  section.city{ padding:3.2rem 0 1rem; scroll-margin-top:2rem; }
+
+  .city-head{
+    display:flex;
+    align-items:flex-start;
+    gap:1.1rem;
+    margin-bottom:1.6rem;
+  }
+  .city-head .icon{ flex:0 0 auto; margin-top:0.15rem; }
+  .city-head .titles{ flex:1 1 auto; }
+  .city-head .kicker{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--ink-soft);
+    display:block;
+    margin-bottom:0.2rem;
+  }
+  .city-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:2rem;
+    margin:0;
+    color:var(--clay-deep);
+  }
+  .city-intro{ color:var(--ink-soft); font-size:0.98rem; margin:0 0 1.8rem; }
+
+  .cat{ margin-bottom:1.9rem; }
+  .cat h3{
+    font-family:'Karla', sans-serif;
+    font-weight:700;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--olive);
+    margin:0 0 0.8rem;
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .cat h3::after{
+    content:"";
+    flex:1 1 auto;
+    height:1px;
+    background:var(--rule);
+  }
+
+  ul.picks{ list-style:none; margin:0; padding:0; }
+  ul.picks li{
+    position:relative;
+    padding:0 0 0.85rem 1.15rem;
+    margin-bottom:0.85rem;
+    border-bottom:1px dashed var(--rule);
+    font-size:0.97rem;
+  }
+  ul.picks li:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  ul.picks li::before{
+    content:"";
+    position:absolute;
+    left:0; top:0.55em;
+    width:6px; height:6px;
+    background:var(--clay);
+    transform:rotate(45deg);
+  }
+  ul.picks li strong{ color:var(--ink); }
+  ul.picks li .note{ display:block; color:var(--ink-soft); font-size:0.92rem; margin-top:0.15rem; }
+  ul.picks li a{ font-size:0.9rem; font-weight:600; }
+
+  .tip{
+    background:var(--sand-deep);
+    border-left:3px solid var(--gold);
+    padding:0.9rem 1.1rem;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    border-radius:0 var(--radius) var(--radius) 0;
+    margin-top:0.4rem;
+  }
+  .tip strong{ color:var(--ink); }
+
+  /* ---------- safety note ---------- */
+  .safety{
+    max-width:640px;
+    margin:1rem auto 0;
+    padding:0 1.5rem;
+  }
+  .safety .card{
+    background:var(--indigo);
+    color:var(--paper);
+    border-radius:var(--radius);
+    padding:1.9rem 2rem;
+  }
+  .safety .card h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:1.3rem;
+    margin:0 0 0.7rem;
+  }
+  .safety .card p{ margin:0; font-size:0.95rem; color:#E7DCC6; }
+
+  /* ---------- closing ---------- */
+  footer.closing{
+    max-width:560px;
+    margin:0 auto;
+    padding:4rem 1.5rem 5rem;
+    text-align:center;
+  }
+  footer.closing p.script{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.35rem;
+    line-height:1.5;
+    color:var(--ink);
+    margin:0 0 1.2rem;
+  }
+  footer.closing p.sign{
+    font-size:0.85rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:700;
+  }
+
+  @media (max-width:520px){
+    header.hero{ padding:3.2rem 1.2rem 2.6rem; }
+    .city-head h2{ font-size:1.6rem; }
+    .intro-note .card, .safety .card{ padding:1.4rem 1.3rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="eyebrow">Guía de viaje · antes o después de la boda</span>
+  <h1 class="display">Cuatro ciudades, <span>sin prisa</span> ni itinerario</h1>
+  <p class="lede">Una libreta de lugares que nos gustan de verdad — no un plan cerrado. Coge lo que te apetezca de cada ciudad y arma tu propio recorrido.</p>
+  <a href="#" class="back-link">← Volver a la web de la boda</a>
+
+  <div class="arches">
+    <svg width="70" height="90" viewBox="0 0 70 90" fill="none">
+      <path d="M5 90V40C5 20 18 5 35 5C52 5 65 20 65 40V90" stroke="#BD5A2E" stroke-width="2" opacity="0.55"/>
+      <path d="M16 90V42C16 27 24 16 35 16C46 16 54 27 54 42V90" stroke="#C4901F" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+    <svg width="70" height="90" viewBox="0 0 70 90" fill="none">
+      <path d="M5 90V40C5 20 18 5 35 5C52 5 65 20 65 40V90" stroke="#6C7A3E" stroke-width="2" opacity="0.55"/>
+      <path d="M16 90V42C16 27 24 16 35 16C46 16 54 27 54 42V90" stroke="#BD5A2E" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+    <svg width="70" height="90" viewBox="0 0 70 90" fill="none">
+      <path d="M5 90V40C5 20 18 5 35 5C52 5 65 20 65 40V90" stroke="#7C3140" stroke-width="2" opacity="0.55"/>
+      <path d="M16 90V42C16 27 24 16 35 16C46 16 54 27 54 42V90" stroke="#6C7A3E" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+  </div>
+</header>
+
+<div class="intro-note">
+  <div class="card">
+    <h2 class="display">Cómo usar esta guía</h2>
+    <p>Esto no es un itinerario día por día: son ideas sueltas que nos han encantado en cada ciudad — qué ver, dónde comer y, si hace falta, dónde alojarse. Combínalas como quieras, sáltate lo que no te llame y déjate un rato libre para perderte sin mapa. Esa parte también es del viaje.</p>
+  </div>
+</div>
+
+<nav class="city-jump">
+  <a href="#cordoba">Córdoba</a>
+  <a href="#granada">Granada</a>
+  <a href="#sevilla">Sevilla</a>
+  <a href="#madrid">Madrid</a>
+</nav>
+
+<main>
+
+  <!-- ======================= CÓRDOBA ======================= -->
+  <section class="city" id="cordoba">
+    <div class="city-head">
+      <svg class="icon" width="46" height="46" viewBox="0 0 46 46" fill="none">
+        <circle cx="23" cy="23" r="21" stroke="#BD5A2E" stroke-width="1.5" opacity="0.4"/>
+        <path d="M12 32V20c0-6 5-11 11-11s11 5 11 11v12" stroke="#BD5A2E" stroke-width="1.6"/>
+        <path d="M17 32V22c0-3.3 2.7-6 6-6s6 2.7 6 6v10" stroke="#C4901F" stroke-width="1.2"/>
+      </svg>
+      <div class="titles">
+        <span class="kicker">Andalucía · patio y cal</span>
+        <h2 class="display">Córdoba</h2>
+      </div>
+    </div>
+    <p class="city-intro">La ciudad donde nos casamos. Calles estrechas, patios floridos y una de las mezquitas más impresionantes del mundo — se recorre bien en un par de días tranquilos.</p>
+
+    <div class="cat">
+      <h3>Para ver y callejear</h3>
+      <ul class="picks">
+        <li><strong>Casco antiguo</strong> — Plaza de las Tendillas, el Cristo de los Faroles y la Plaza de la Corredera son parada obligada para orientarse.</li>
+        <li><strong>Free tour por Córdoba</strong> — buena forma de conocer la historia de la ciudad de mano de un guía local.
+          <a href="https://www.civitatis.com/es/cordoba/free-tour-cordoba" target="_blank">Reservar free tour →</a>
+        </li>
+        <li><strong>Mezquita-Catedral de Córdoba</strong> — con o sin audioguía, como prefieras. Merece muchísimo la pena subir a la torre campanario: las vistas de la ciudad son preciosas.
+          <a href="https://tickets.mezquita-catedraldecordoba.es/es" target="_blank">Comprar entradas →</a>
+        </li>
+        <li><strong>La Judería</strong> — callejea, cruza el puente romano y déjate llevar entre bares, tapitas y vino. Es fácil enamorarse de este barrio.</li>
+        <li><strong>Alcázar de los Reyes Cristianos</strong> — si el día te da para más. Hay una entrada conjunta con la Mezquita.
+          <a href="https://alcazardecordoba.es/visita/alcazar-mezquita/" target="_blank">Entrada combinada →</a>
+        </li>
+      </ul>
+      <div class="tip"><strong>Ritmo:</strong> Mezquita y Alcázar juntos llevan unas 3 horas — puedes repartirlos entre mañana y tarde sin agobios.</div>
+    </div>
+
+    <div class="cat">
+      <h3>Dónde comer, cerca de la Mezquita y la Ribera</h3>
+      <ul class="picks">
+        <li><strong>Taberna Pedro Ximénez</strong> <a href="https://share.google/xGA65fiFXDG27Nw11" target="_blank">→ ubicación</a></li>
+        <li><strong>Taberna del Río</strong> <a href="https://share.google/8FwLj7dCWVnUQNWlc" target="_blank">→ ubicación</a></li>
+        <li><strong>Bodegas Mezquita</strong> <a href="https://share.google/fmGSaTJrgXZV3njKo" target="_blank">→ ubicación</a></li>
+      </ul>
+    </div>
+
+    <div class="cat">
+      <h3>Para tapear y tomar algo</h3>
+      <ul class="picks">
+        <li><strong>Bar Santos</strong> — la tortilla de patatas más grande de Córdoba (según dicen). Suele estar lleno, pero si hay hueco, se prueba.
+          <span class="note"><a href="https://share.google/Ehi0KQhewxlvG1tLo" target="_blank">→ ubicación</a></span>
+        </li>
+        <li><strong>Taberna el N.º 10</strong> <a href="https://share.google/tOX8x0RsnzcjZkIpv" target="_blank">→ ubicación</a></li>
+        <li><strong>Taberna Ágora Mezquita</strong> <a href="https://maps.app.goo.gl/tHKWMhRy73KSfbdT6" target="_blank">→ ubicación</a></li>
+      </ul>
+      <div class="tip"><strong>Un consejo:</strong> reserva mesa si puedes, se llena rápido. Muchos restaurantes cierran cocina sobre las 15:30–16:00, y hay mesa para almorzar desde la 13:30.</div>
+    </div>
+  </section>
+
+  <div class="tile-rule">
+    <div class="line"></div>
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0 16 8 8 16 0 8Z" fill="#BD5A2E" opacity="0.55"/></svg>
+    <div class="line"></div>
+  </div>
+
+  <!-- ======================= GRANADA ======================= -->
+  <section class="city" id="granada">
+    <div class="city-head">
+      <svg class="icon" width="46" height="46" viewBox="0 0 46 46" fill="none">
+        <circle cx="23" cy="23" r="21" stroke="#6C7A3E" stroke-width="1.5" opacity="0.4"/>
+        <path d="M9 30h28M13 30V16l10-8 10 8v14" stroke="#6C7A3E" stroke-width="1.6"/>
+        <path d="M18 30v-8h10v8" stroke="#C4901F" stroke-width="1.2"/>
+      </svg>
+      <div class="titles">
+        <span class="kicker">Andalucía · Alhambra y Albaicín</span>
+        <h2 class="display">Granada</h2>
+      </div>
+    </div>
+    <p class="city-intro">Una de nuestras ciudades favoritas de España. Miradores, callejones y la Alhambra asomando entre las casas del Albaicín.</p>
+
+    <div class="cat">
+      <h3>Para ver y callejear</h3>
+      <ul class="picks">
+        <li><strong>Mirador de San Nicolás</strong> — sube al atardecer, con la Alhambra de fondo. Es de esos momentos que se quedan.</li>
+        <li><strong>Free tour por Granada</strong> — muy recomendable para ubicarte y conocer la historia de la ciudad desde el primer día.
+          <a href="https://www.civitatis.com/es/granada/free-tour-granada" target="_blank">Reservar free tour →</a>
+        </li>
+        <li><strong>Alhambra y Generalife</strong> — reserva con antelación, las entradas vuelan.
+          <a href="https://entradas-alhambradegranada.org/entradas-alhambra/" target="_blank">Comprar entradas →</a>
+        </li>
+        <li><strong>Albaicín</strong> — la Carrera del Darro, la calle de las Teterías, el Zoco Nazarí y el centro se recorren bien caminando sin rumbo fijo.</li>
+        <li><strong>Mirador de la Abadía</strong> — otra vista distinta de la ciudad, menos concurrida que San Nicolás.</li>
+        <li><strong>Flamenco</strong> — en la plaza principal suele haber baile improvisado. Si prefieres un show en cueva, hay tablaos como
+          <a href="https://cuevalosamayas.com/" target="_blank">Cueva Los Amayas →</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cat">
+      <h3>Dónde comer</h3>
+      <ul class="picks">
+        <li><strong>Bares y restaurantes recomendados</strong> — esta guía tiene una selección muy completa por zonas de Granada.
+          <a href="https://www.andalucia360travel.com/que-hacer-en-granada/donde-comer-en-granada/" target="_blank">Ver la lista →</a>
+        </li>
+      </ul>
+      <div class="tip"><strong>Detalle local:</strong> en Granada (y también en Córdoba) es común que al pedir una caña o un vino te pongan una tapa gratis. Cada vez quedan menos bares que lo hagan, pero todavía se encuentran.</div>
+    </div>
+
+    <div class="cat">
+      <h3>Dónde alojarse</h3>
+      <ul class="picks">
+        <li><strong>Ideas por zona</strong> — este blog está bastante detallado si quieres comparar barrios y opciones.
+          <a href="https://dondealojarseen.es/granada" target="_blank">Ver guía de alojamiento →</a>
+        </li>
+      </ul>
+      <div class="tip">Si reservas un apartamento, mira bien las reseñas de limpieza antes de confirmar.</div>
+    </div>
+  </section>
+
+  <div class="tile-rule">
+    <div class="line"></div>
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0 16 8 8 16 0 8Z" fill="#6C7A3E" opacity="0.55"/></svg>
+    <div class="line"></div>
+  </div>
+
+  <!-- ======================= SEVILLA ======================= -->
+  <section class="city" id="sevilla">
+    <div class="city-head">
+      <svg class="icon" width="46" height="46" viewBox="0 0 46 46" fill="none">
+        <circle cx="23" cy="23" r="21" stroke="#7C3140" stroke-width="1.5" opacity="0.4"/>
+        <rect x="16" y="8" width="14" height="26" rx="1" stroke="#7C3140" stroke-width="1.6"/>
+        <path d="M23 8V4M19 4h8" stroke="#C4901F" stroke-width="1.2"/>
+      </svg>
+      <div class="titles">
+        <span class="kicker">Andalucía · Giralda y Triana</span>
+        <h2 class="display">Sevilla</h2>
+      </div>
+    </div>
+    <p class="city-intro">Grande, luminosa y hecha para perderse de noche entre sus calles. Entre monumentos y tapeo da fácilmente para un par de días largos.</p>
+
+    <div class="cat">
+      <h3>Para ver y callejear</h3>
+      <ul class="picks">
+        <li><strong>Free tour por Sevilla</strong> — ideal para el primer paseo por la ciudad.
+          <a href="https://www.civitatis.com/es/sevilla/visita-guiada-sevilla" target="_blank">Reservar free tour →</a>
+        </li>
+        <li><strong>Catedral de Sevilla y La Giralda</strong> <a href="https://catedraldesevilla.servitickets.es/" target="_blank">→ entradas</a></li>
+        <li><strong>Real Alcázar de Sevilla</strong> <a href="https://alcazardesevilla.infoticketing.com/es" target="_blank">→ entradas</a></li>
+        <li><strong>Plaza de España</strong> y <strong>Torre del Oro</strong> — imprescindibles, mejor con calma y sin prisa por la foto.</li>
+        <li><strong>Barrio de Triana</strong> y <strong>Barrio de Santa Cruz</strong> — dos caras muy distintas de la ciudad, ambas para callejear.</li>
+        <li><strong>Estadio del Sevilla</strong> — si el fútbol os va, hay visita guiada al estadio.</li>
+      </ul>
+    </div>
+
+    <div class="cat">
+      <h3>Dónde comer y tapear</h3>
+      <ul class="picks">
+        <li><strong>Selección de bares de tapeo</strong> <a href="https://www.instagram.com/reel/DU6JX7miK2q/" target="_blank">→ ver recomendaciones</a></li>
+        <li><strong>Bodega Palo Santo</strong> <a href="https://share.google/mOdkyqsCr3Vm7hnDW" target="_blank">→ ubicación</a></li>
+        <li><strong>La Santa</strong> <a href="https://share.google/LAAo6ajIzeHDRq0H5" target="_blank">→ ubicación</a></li>
+        <li><strong>El Sella</strong> <a href="https://share.google/QGUnesRJs0FRxcHSE" target="_blank">→ ubicación</a></li>
+        <li><strong>La Bartola</strong> <a href="https://share.google/QwRhwdXV1UYpyJpmT" target="_blank">→ ubicación</a></li>
+      </ul>
+      <div class="tip"><strong>En serio, reserva:</strong> Sevilla se llena, sobre todo en temporada alta. No digas que no avisamos.</div>
+    </div>
+
+    <div class="cat">
+      <h3>Dónde alojarse</h3>
+      <ul class="picks">
+        <li><strong>MDD4 Health Experience Hotel</strong> (solo adultos) <a href="https://www.booking.com/Share-qviIKrM" target="_blank">→ Booking.com</a></li>
+        <li><strong>nüa cicerone</strong> <a href="https://www.booking.com/Share-KEaBRe" target="_blank">→ Booking.com</a></li>
+        <li><strong>Almona de Triana – Kainga Homes</strong> <a href="https://www.booking.com/Share-VNqokov" target="_blank">→ Booking.com</a></li>
+        <li><strong>Hotel Boutique Casa de Colón</strong> — entre los favoritos, aunque aún no nos hemos alojado ahí. <a href="https://www.booking.com/Share-7dhBKu" target="_blank">→ Booking.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="tile-rule">
+    <div class="line"></div>
+    <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 0 16 8 8 16 0 8Z" fill="#7C3140" opacity="0.55"/></svg>
+    <div class="line"></div>
+  </div>
+
+  <!-- ======================= MADRID ======================= -->
+  <section class="city" id="madrid">
+    <div class="city-head">
+      <svg class="icon" width="46" height="46" viewBox="0 0 46 46" fill="none">
+        <circle cx="23" cy="23" r="21" stroke="#2F4A5C" stroke-width="1.5" opacity="0.4"/>
+        <path d="M10 34 16 14h14l6 20" stroke="#2F4A5C" stroke-width="1.6"/>
+        <circle cx="23" cy="20" r="3" stroke="#C4901F" stroke-width="1.2"/>
+      </svg>
+      <div class="titles">
+        <span class="kicker">Capital · Gran Vía y Retiro</span>
+        <h2 class="display">Madrid</h2>
+      </div>
+    </div>
+    <p class="city-intro">La ciudad da para dos días largos caminando. Va bien empezar con un paseo al atardecer y dejar el resto para descubrir barrio a barrio.</p>
+
+    <div class="cat">
+      <h3>Para ver y callejear</h3>
+      <ul class="picks">
+        <li><strong>Templo de Debod</strong> — precioso al atardecer, buen primer paseo al llegar.</li>
+        <li><strong>Free tour por Madrid</strong> <a href="https://www.civitatis.com/es/madrid/free-tour-madrid" target="_blank">→ reservar</a></li>
+        <li><strong>Palacio Real de Madrid</strong> — vale mucho la pena entrar. <a href="https://tickets.patrimonionacional.es/es/tickets/palacio-real-de-madrid" target="_blank">→ entradas</a></li>
+        <li><strong>Estadio Santiago Bernabéu</strong> — si eres del Madrid, hay visita guiada. <a href="https://www.realmadrid.com/es-ES/tour-bernabeu/individual" target="_blank">→ entradas</a></li>
+        <li><strong>Gran Vía, Callao y Puerta del Sol</strong> — el centro clásico, se anda mucho.</li>
+        <li><strong>Churros en San Ginés</strong> — suele haber cola, pero merece el intento.</li>
+        <li><strong>Plaza Mayor</strong> y <strong>Mercado de San Miguel</strong> — muy turístico y algo caro, pero es parada habitual.</li>
+        <li><strong>Malasaña, Chueca, La Latina y el Barrio de las Letras</strong> — los barrios con más vida y terrazas.</li>
+        <li><strong>Puerta de Alcalá y el Retiro</strong> — perfecto para desconectar un rato del bullicio.</li>
+        <li><strong>Museo del Prado</strong> — al menos por fuera; entrar de verdad requiere medio día, mejor si ya está en tu lista.</li>
+      </ul>
+      <div class="tip">Todo esto se puede hacer con calma en dos días — depende de cuánto tiempo os quedéis en Madrid.</div>
+    </div>
+
+    <div class="cat">
+      <h3>Dónde comer</h3>
+      <ul class="picks">
+        <li><strong>Restaurante Public</strong> — buen menú del día. <a href="https://maps.app.goo.gl/Ny9ZTgvfyCNqA8rGA" target="_blank">→ ubicación</a></li>
+        <li><strong>El Buo</strong> — sus tortillas de patatas y raciones generosas. <a href="https://maps.app.goo.gl/ntNYDxJqxsoM4HGg6" target="_blank">→ ubicación</a></li>
+        <li><strong>Casa Dani</strong> <a href="https://maps.app.goo.gl/WDkk8CqnTrxKSzCk7" target="_blank">→ ubicación</a></li>
+        <li><strong>Los Caracoles</strong> — taberna tradicional, sus caracoles son el plato estrella. <a href="https://share.google/hIgAzO1P7NLw2IlY0" target="_blank">→ ubicación</a></li>
+        <li><strong>El Pato Mudo</strong> — arroces. <a href="https://share.google/1CO4ptQ0BbDltaR3s" target="_blank">→ ubicación</a></li>
+        <li><strong>Honest Greens</strong> — comida saludable, sin reserva, hay varios locales por Madrid.</li>
+        <li><strong>Casa Carmen</strong> — cerca del Retiro y Gran Vía. <a href="https://maps.app.goo.gl/E6QKoC9de5aZ9EF97" target="_blank">→ ubicación</a></li>
+        <li><strong>La Tavernier</strong> — rooftop bonito para el atardecer. <a href="https://maps.app.goo.gl/QeDqCMsRyBjHQrTt8" target="_blank">→ ubicación</a></li>
+      </ul>
+      <div class="tip"><strong>Indispensable reservar:</strong> Madrid tiene miles de sitios buenos — esto es solo lo que más nos gusta cerca del centro. Si buscáis algo distinto, preguntadnos.</div>
+    </div>
+
+    <div class="cat">
+      <h3>Dónde alojarse</h3>
+      <ul class="picks">
+        <li><strong>Zona Manuel Becerra</strong> (Airbnb) <a href="https://www.airbnb.mx/rooms/44928238" target="_blank">→ ver alojamiento</a></li>
+        <li><strong>Ibis Madrid Centro Las Ventas</strong> <a href="https://www.booking.com/Share-donXREV" target="_blank">→ Booking.com</a></li>
+        <li><strong>NH Hotel Las Ventas</strong> <a href="https://www.nh-hotels.com/es/hotel/nh-madrid-las-ventas" target="_blank">→ web del hotel</a></li>
+        <li><strong>OLBLANC Plaza de España by Batuecas</strong> <a href="https://www.booking.com/Share-lmcFOLQ" target="_blank">→ Booking.com</a></li>
+        <li><strong>Catalonia El Retiro</strong> <a href="https://www.booking.com/Share-PrWU1hs" target="_blank">→ Booking.com</a></li>
+      </ul>
+      <div class="tip">Alojarse un poco fuera del centro estricto (Gran Vía) suele salir más económico, y Madrid se mueve muy bien en metro.</div>
+    </div>
+  </section>
+
+</main>
+
+<div class="safety">
+  <div class="card">
+    <h2 class="display">Un aviso, con cariño</h2>
+    <p>En Córdoba, Granada, Sevilla y sobre todo Madrid, ten cuidado con los carteristas en el metro y en zonas muy concurridas — Gran Vía, Puerta del Sol, Callao, el Mercado de San Miguel. Aprovechan las aglomeraciones para acercarse. Lleva el móvil, la cartera y el pasaporte bien guardados y evita joyas llamativas: la misma precaución de siempre en cualquier ciudad grande.</p>
+  </div>
+</div>
+
+<footer class="closing">
+  <p class="script display">Nos encantaría acompañaros en cada rincón, pero mientras tanto os dejamos estas pistas para que descubráis Andalucía y Madrid a vuestro ritmo. Escribidnos si tenéis dudas — estaremos encantados de ayudar.</p>
+  <p class="sign">Con cariño</p>
+</footer>
+
+</body>
+</html>
